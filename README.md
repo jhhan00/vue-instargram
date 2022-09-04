@@ -1,24 +1,5 @@
 # vuestagram
 
-## Project setup
-```
-npm install
-```
+## vue.js로 인스타그램 앱을 만들어보기
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 참고) CodingApple의 Vue 강의를 따라하면서 만들어보는 인스타그램 앱
