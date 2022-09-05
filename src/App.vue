@@ -9,7 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postData="instaData"></Container>
+  <Container :postData="instaData" :nowTab="nowTab"></Container>
   <button @click="btn_more" style="margin-left: 400px;">더보기</button>
 
   <div class="footer">
@@ -18,6 +18,16 @@
       <label for="file" class="input-plus">+</label>
     </ul>
  </div>
+
+ <!-- tab 예시 코드
+ <button @click="nowTab=0;">버튼0</button>
+ <button @click="nowTab=1;">버튼1</button>
+ <button @click="nowTab=2;">버튼2</button>
+ <div v-if="nowTab == 0">내용0</div>
+ <div v-if="nowTab == 1">내용1</div>
+ <div v-if="nowTab == 2">내용2</div>
+ <div style="margin-top: 500px;"></div> -->
+
 </template>
 
 <script>
@@ -35,6 +45,7 @@ export default {
     return {
       instaData : postData,
       clickCnt : 0,
+      nowTab : 0,
     }
   },
   methods : {
