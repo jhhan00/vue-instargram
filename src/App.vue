@@ -34,14 +34,21 @@ export default {
   data() {
     return {
       instaData : postData,
+      clickCnt : 0,
     }
   },
   methods : {
     btn_more() {
-      axios.get('https://codingapple1.github.io/vue/more0.json')
+      let url = `https://codingapple1.github.io/vue/more${this.clickCnt}.json`;      
+      this.clickCnt++;
+
+      axios.get(url)
         .then((result) => {
           // console.log(result.data);
           this.instaData.push(result.data);
+        }).catch((err) => {
+          console.log(err);
+          alert("불러오지 못했습니다.");
         });
     },
   },
