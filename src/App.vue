@@ -9,7 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container></Container>
+  <Container :postData="instaData"></Container>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -23,6 +23,8 @@
 
 import Container from './components/Container.vue';
 
+import postData from './js/postData';
+
 export default {
   name: 'App',
   components: {
@@ -30,7 +32,7 @@ export default {
   },
   data() {
     return {
-      
+      instaData : postData,
     }
   },
 }
@@ -38,7 +40,7 @@ export default {
 
 <style>
 
-@import 'css/style1.css';
+/* @import 'css/style1.css'; */
 
 body {
   margin: 0;
