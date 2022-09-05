@@ -10,6 +10,7 @@
   </div>
 
   <Container :postData="instaData"></Container>
+  <button @click="btn_more" style="margin-left: 400px;">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -22,8 +23,8 @@
 <script>
 
 import Container from './components/Container.vue';
-
 import postData from './js/postData';
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -34,6 +35,15 @@ export default {
     return {
       instaData : postData,
     }
+  },
+  methods : {
+    btn_more() {
+      axios.get('https://codingapple1.github.io/vue/more0.json')
+        .then((result) => {
+          // console.log(result.data);
+          this.instaData.push(result.data);
+        });
+    },
   },
 }
 </script>
