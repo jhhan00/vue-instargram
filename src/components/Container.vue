@@ -10,7 +10,7 @@
 
     <div v-if="nowTab == 1">
       <!-- 필터선택페이지 -->
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="{ backgroundImage : `url(${imgUrl})` }"></div>
       <div class="filters">
         <div class="filter-1"></div>
         <div class="filter-1"></div>
@@ -22,7 +22,7 @@
 
     <div v-if="nowTab == 2">
       <!-- 글작성페이지 -->
-      <div class="upload-image"></div>
+      <div class="upload-image" :style="{ backgroundImage : `url(${imgUrl})` }"></div>
       <div class="write">
         <textarea class="write-box">write!</textarea>
       </div>
@@ -43,6 +43,7 @@ export default {
   props : {
     postData : Array,
     nowTab : Number,
+    imgUrl : String,
   },
 }
 </script>

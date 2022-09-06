@@ -9,13 +9,14 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postData="instaData" :nowTab="nowTab"></Container>
-  <button @click="btn_more" style="margin-left: 400px;">더보기</button>
+  <Container :postData="instaData" :nowTab="nowTab" :imgUrl="imgUrl"></Container>
+  <button v-if="nowTab == 0" @click="btn_more" style="margin-left: 400px;">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
-      <label for="file" class="input-plus">+</label>
+      <!-- 이미지 업로드 버튼 -->
+      <input @change="fileUpload" type="file" id="file" class="inputfile" accept="image/*" />
+      <label for="file" class="input-plus">Upload</label>
     </ul>
  </div>
 
@@ -46,6 +47,7 @@ export default {
       instaData : postData,
       clickCnt : 0,
       nowTab : 0,
+      imgUrl : "",
     }
   },
   methods : {
@@ -62,6 +64,13 @@ export default {
           alert("불러오지 못했습니다.");
         });
     },
+    fileUpload(e) {
+      let file = e.target.files;
+      this.nowTab = 2;
+
+      let url = URL.createObjectURL(file[0]);
+      this.imgUrl = url;
+    }
   },
 }
 </script>
