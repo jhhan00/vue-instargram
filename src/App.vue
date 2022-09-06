@@ -1,15 +1,22 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li @click="cancelPost">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li v-if="nowTab == 1" @click="nowTab++;">Next</li>
+      <li v-if="nowTab == 2" @click="createPost">Post</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :postData="instaData" :nowTab="nowTab" :imgUrl="imgUrl"></Container>
+  <Container
+    :postData="instaData"
+    :nowTab="nowTab"
+    :imgUrl="imgUrl"
+    @newName="newName"
+    @newContent="newContent">
+  </Container>
   <button v-if="nowTab == 0" @click="btn_more" style="margin-left: 400px;">더보기</button>
 
   <div class="footer">
@@ -48,6 +55,8 @@ export default {
       clickCnt : 0,
       nowTab : 0,
       imgUrl : "",
+      newName : "a",
+      newContent : "b",
     }
   },
   methods : {
@@ -57,7 +66,6 @@ export default {
 
       axios.get(url)
         .then((result) => {
-          // console.log(result.data);
           this.instaData.push(result.data);
         }).catch((err) => {
           console.log(err);
@@ -66,11 +74,34 @@ export default {
     },
     fileUpload(e) {
       let file = e.target.files;
-      this.nowTab = 2;
+      this.nowTab = 1;
 
       let url = URL.createObjectURL(file[0]);
       this.imgUrl = url;
-    }
+    },
+    createPost() {
+      let date = new Date();
+      let yy = date.getFullYear();
+      let mo = String(date.getMonth()+1).padStart(2, "0");
+      let dy = String(date.getDate()).padStart(2, "0");
+
+      let newPost = {
+        name: this.newName,
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imgUrl,
+        likes: 0,
+        date: `${yy} ${mo} ${dy}`,
+        liked: false,
+        content: this.newContent,
+        filter: "perpetua"
+      };
+      this.instaData.unshift(newPost);
+      this.nowTab = 0;
+    },
+    cancelPost() {
+      this.imgUrl = "";
+      this.nowTab = 0;
+    },
   },
 }
 </script>
