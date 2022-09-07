@@ -14,8 +14,8 @@
     :postData="instaData"
     :nowTab="nowTab"
     :imgUrl="imgUrl"
-    @newName="newName"
-    @newContent="newContent">
+    @updateName="setName"
+    @updateContent="setContent">
   </Container>
   <button v-if="nowTab == 0" @click="btn_more" style="margin-left: 400px;">더보기</button>
 
@@ -101,6 +101,12 @@ export default {
     cancelPost() {
       this.imgUrl = "";
       this.nowTab = 0;
+    },
+    setName(data) {
+      this.newName = data;
+    },
+    setContent(data) {
+      this.newContent = data;
     },
   },
 }

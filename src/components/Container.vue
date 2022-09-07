@@ -55,6 +55,14 @@ export default {
       newContent : "content",
     }
   },
+  watch : {
+    newName() {
+      this.$emit('updateName', this.newName);
+    },
+    newContent() {
+      this.$emit('updateContent', this.newContent);
+    },
+  },
 }
 </script>
 
