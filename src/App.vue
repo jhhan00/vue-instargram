@@ -19,7 +19,7 @@
   </Container>
   <button v-if="nowTab == 0" @click="btn_more" style="margin-left: 400px;">더보기</button>
 
-  <div class="footer">
+  <div class="footer" v-if="nowTab == 0">
     <ul class="footer-button-plus">
       <!-- 이미지 업로드 버튼 -->
       <input @change="fileUpload" type="file" id="file" class="inputfile" accept="image/*" />

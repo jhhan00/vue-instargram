@@ -12,11 +12,11 @@
       <!-- 필터선택페이지 -->
       <div class="upload-image" :style="`background-image : url(${imgUrl})`"></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+          v-for="(filter, idx) in filterArray" :key="idx"
+          :imgUrl="imgUrl"
+          :instaFilter="filterArray[idx]">
+        </FilterBox>
       </div>
     </div>
 
@@ -38,11 +38,13 @@
 <script>
 
 import Post from './Post.vue';
+import FilterBox from './FilterBox.vue';
 
 export default {
   name : "ContainerComponent",
   components : {
-    Post
+    Post,
+    FilterBox
   },
   props : {
     postData : Array,
@@ -53,6 +55,11 @@ export default {
     return {
       newName : "name",
       newContent : "content",
+      filterArray : [ 
+        "aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson", 
+        "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
+        "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"
+      ],
     }
   },
   watch : {
@@ -61,6 +68,10 @@ export default {
     },
     newContent() {
       this.$emit('updateContent', this.newContent);
+    },
+    nowTab() {
+      this.newName = "name";
+      this.newContent = "content";
     },
   },
 }
