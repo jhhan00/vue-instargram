@@ -16,6 +16,7 @@
           v-for="(filter, idx) in filterArray" :key="idx"
           :imgUrl="imgUrl"
           :instaFilter="filterArray[idx]">
+          <span>{{filter}}</span> <!-- slot 문법용 -->
         </FilterBox>
       </div>
     </div>

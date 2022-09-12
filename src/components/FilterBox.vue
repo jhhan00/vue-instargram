@@ -1,5 +1,7 @@
 <template>
-  <div :class="`filter-item ${instaFilter}`" :style="`background-image : url(${imgUrl})`"></div>
+  <div :class="`filter-item ${instaFilter}`" :style="`background-image : url(${imgUrl})`">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
