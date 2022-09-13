@@ -59,6 +59,11 @@ export default {
       newContent : "b",
     }
   },
+  mounted() {
+    this.emitter.on('작명', (a) => {
+      console.log(a);
+    });
+  },
   methods : {
     btn_more() {
       let url = `https://codingapple1.github.io/vue/more${this.clickCnt}.json`;      
