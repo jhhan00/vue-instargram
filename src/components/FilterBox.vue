@@ -1,7 +1,8 @@
 <template>
   <div :class="`filter-item ${instaFilter}`" :style="`background-image : url(${imgUrl})`">
-    <slot></slot>
-    <button @click="fire">button</button>
+    <button class="filter-button" @click="fire">
+      <slot></slot>
+    </button>
   </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
   methods : {
     fire() {
       // 사용법 : this.emitter.emit('작명', '데이터');
-      this.emitter.emit('작명', '데이터');
+      this.emitter.emit('filterButton', this.instaFilter);
     },
   },
 }
@@ -36,5 +37,11 @@ export default {
   color : white;
   background-size: cover;
   background-position : center;
+}
+
+.filter-button {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  float: right;
 }
 </style>

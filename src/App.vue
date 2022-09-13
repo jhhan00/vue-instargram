@@ -4,6 +4,7 @@
       <li @click="cancelPost">Cancel</li>
     </ul>
     <ul class="header-button-right">
+      <!-- <li v-if="nowTab == 0" @click="nowTab++;">Upload</li> -->
       <li v-if="nowTab == 1" @click="nowTab++;">Next</li>
       <li v-if="nowTab == 2" @click="createPost">Post</li>
     </ul>
@@ -27,15 +28,6 @@
     </ul>
  </div>
 
- <!-- tab 예시 코드
- <button @click="nowTab=0;">버튼0</button>
- <button @click="nowTab=1;">버튼1</button>
- <button @click="nowTab=2;">버튼2</button>
- <div v-if="nowTab == 0">내용0</div>
- <div v-if="nowTab == 1">내용1</div>
- <div v-if="nowTab == 2">내용2</div>
- <div style="margin-top: 500px;"></div> -->
-
 </template>
 
 <script>
@@ -57,11 +49,12 @@ export default {
       imgUrl : "",
       newName : "a",
       newContent : "b",
+      newFilter : "",
     }
   },
   mounted() {
-    this.emitter.on('작명', (a) => {
-      console.log(a);
+    this.emitter.on('filterButton', (filter) => {
+      this.newFilter = filter;
     });
   },
   methods : {
@@ -98,7 +91,7 @@ export default {
         date: `${yy} ${mo} ${dy}`,
         liked: false,
         content: this.newContent,
-        filter: "perpetua"
+        filter: this.newFilter
       };
       this.instaData.unshift(newPost);
       this.nowTab = 0;

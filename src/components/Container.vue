@@ -10,7 +10,7 @@
 
     <div v-if="nowTab == 1">
       <!-- 필터선택페이지 -->
-      <div class="upload-image" :style="`background-image : url(${imgUrl})`"></div>
+      <div :class="choosedFilter" class="upload-image" :style="`background-image : url(${imgUrl})`"></div>
       <div class="filters">
         <FilterBox
           v-for="(filter, idx) in filterArray" :key="idx"
@@ -23,7 +23,7 @@
 
     <div v-if="nowTab == 2">
       <!-- 글작성페이지 -->
-      <div class="upload-image" :style="{ backgroundImage : `url(${imgUrl})` }"></div>
+      <div :class="choosedFilter" class="upload-image" :style="{ backgroundImage : `url(${imgUrl})` }"></div>
       <div style="margin-top: 10px;">
         <span>name</span>
         <input style="margin-left: 5px;" v-model="newName"/>
@@ -61,6 +61,7 @@ export default {
         "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua", 
         "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"
       ],
+      choosedFilter : "",
     }
   },
   watch : {
@@ -73,7 +74,14 @@ export default {
     nowTab() {
       this.newName = "name";
       this.newContent = "content";
+      
+      if(this.nowTab === 0) this.choosedFilter = "";
     },
+  },
+  mounted() {
+    this.emitter.on('filterButton', (filter) => {
+      this.choosedFilter = filter;
+    });
   },
 }
 </script>

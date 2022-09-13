@@ -4,7 +4,7 @@
       <div class="profile" :style="{ backgroundImage : `url(${post.userImage})` }"></div> <!-- 프로필 사진 -->
       <span class="profile-name">{{post.name}}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage : `url(${post.postImage})` }"></div> <!-- 게시물 사진 -->
+    <div :class="post.filter" class="post-body" :style="{ backgroundImage : `url(${post.postImage})` }"></div> <!-- 게시물 사진 -->
     <div class="post-content">
       <p>{{post.likes}} Likes</p>
       <p><strong>{{post.name}}</strong> {{post.content}}</p>
