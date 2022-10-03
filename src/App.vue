@@ -11,6 +11,9 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
+  <h4>Hello {{ $store.state.name }}</h4>
+  <button @click="$store.state.name = 'Han'">예제</button>
+
   <Container
     :postData="instaData"
     :nowTab="nowTab"
