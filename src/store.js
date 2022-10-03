@@ -7,7 +7,17 @@ const store = createStore({
     state () {
         return {
             name : 'Kim',
+            age : 29,
+            likes : 36,
         }
+    },
+    mutations: {
+        nameChange(state) {
+            state.name = 'Han'
+        },
+        agePlus(state, payload) {
+            state.age += payload
+        },
     },
 })
 

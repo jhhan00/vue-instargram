@@ -12,7 +12,9 @@
   </div>
 
   <h4>Hello {{ $store.state.name }}</h4>
-  <button @click="$store.state.name = 'Han'">예제</button>
+  <h5>age : {{ $store.state.age }}</h5>
+  <button @click="$store.commit('nameChange')">vuex 변경1</button>
+  <button @click="$store.commit('agePlus', 3)">vuex 변경2</button>
 
   <Container
     :postData="instaData"
