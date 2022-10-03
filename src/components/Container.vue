@@ -4,7 +4,8 @@
       <Post 
         v-for="(post, idx) in postData"
         :key="idx"
-        :post="postData[idx]">
+        :post="postData[idx]"
+        :index="idx">
       </Post>
     </div>
 

@@ -4,9 +4,17 @@
       <div class="profile" :style="{ backgroundImage : `url(${post.userImage})` }"></div> <!-- 프로필 사진 -->
       <span class="profile-name">{{post.name}}</span>
     </div>
-    <div :class="post.filter" class="post-body" :style="{ backgroundImage : `url(${post.postImage})` }"></div> <!-- 게시물 사진 -->
+    <!-- 게시물 사진 -->
+    <div  
+      :class="post.filter"
+      class="post-body"
+      :style="{ backgroundImage : `url(${post.postImage})` }"
+      @click="likesOrCancel">
+    </div>
+    <!-- 게시물 사진 -->
     <div class="post-content">
-      <p>{{post.likes}} Likes</p>
+      <p v-if="index == 0">{{$store.state.likes}} Likes </p>
+      <p v-else>{{post.likes}} Likes </p>
       <p><strong>{{post.name}}</strong> {{post.content}}</p>
       <p class="date">{{post.date}}</p>
     </div>
@@ -18,6 +26,18 @@ export default {
     name : "PostComponent",
     props : {
       post : Object,
+      index : Number,
+    },
+    data() {
+      return {
+        likesClicked : true,
+      }
+    },
+    methods : {
+      likesOrCancel() {
+        this.$store.commit('likesChange', this.likesClicked)
+        this.likesClicked = !this.likesClicked
+      },
     },
 }
 </script>
