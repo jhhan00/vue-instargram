@@ -8,7 +8,7 @@ const store = createStore({
         return {
             name : 'Kim',
             age : 29,
-            likes : 33,
+            likes : [36, 20, 49],
         }
     },
     mutations: {
@@ -19,10 +19,10 @@ const store = createStore({
             state.age += payload
         },
         likesChange(state, payload) {
-            if(payload) {
-                state.likes += 1
+            if(payload.likesClicked) {
+                state.likes[payload.index] += 1
             } else {
-                state.likes -= 1
+                state.likes[payload.index] -= 1
             }
         },
     },

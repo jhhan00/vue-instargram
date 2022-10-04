@@ -13,8 +13,8 @@
     </div>
     <!-- 게시물 사진 -->
     <div class="post-content">
-      <p v-if="index == 0">{{$store.state.likes}} Likes </p>
-      <p v-else>{{post.likes}} Likes </p>
+      <p>{{$store.state.likes[index]}} Likes </p>
+      <!-- <p>{{post.likes}} Likes </p> -->
       <p><strong>{{post.name}}</strong> {{post.content}}</p>
       <p class="date">{{post.date}}</p>
     </div>
@@ -35,8 +35,11 @@ export default {
     },
     methods : {
       likesOrCancel() {
-        this.$store.commit('likesChange', this.likesClicked)
-        this.likesClicked = !this.likesClicked
+        this.$store.commit('likesChange', { 
+          'likesClicked': this.likesClicked,
+          'index': this.index 
+        });
+        this.likesClicked = !this.likesClicked;
       },
     },
 }
