@@ -16,6 +16,9 @@
   <button @click="$store.commit('nameChange')">vuex 변경1</button>
   <button @click="$store.commit('agePlus', 3)">vuex 변경2</button>
 
+  <p>{{ $store.state.morePost }}</p>
+  <button @click="$store.dispatch('getMorePostData')">더보기</button>
+
   <Container
     :postData="instaData"
     :nowTab="nowTab"
