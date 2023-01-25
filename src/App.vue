@@ -59,7 +59,7 @@ export default {
     return {
       instaData : postData,
       clickCnt : 0,
-      nowTab : 0,
+      nowTab : 3,
       imgUrl : "",
       newName : "a",
       newContent : "b",

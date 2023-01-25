@@ -34,6 +34,10 @@
       </div>
     </div>
 
+    <div v-if="nowTab == 3">
+      <MyPage></MyPage>
+    </div>
+
   </div>
 </template>
 
@@ -41,12 +45,14 @@
 
 import Post from './Post.vue';
 import FilterBox from './FilterBox.vue';
+import MyPage from './MyPage.vue'
 
 export default {
   name : "ContainerComponent",
   components : {
     Post,
-    FilterBox
+    FilterBox,
+    MyPage,
   },
   props : {
     postData : Array,
