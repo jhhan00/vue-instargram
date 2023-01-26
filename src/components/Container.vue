@@ -35,7 +35,7 @@
     </div>
 
     <div v-if="nowTab == 3">
-      <MyPage></MyPage>
+      <MyPage :one="1"></MyPage>
     </div>
 
   </div>
